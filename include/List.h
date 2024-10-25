@@ -120,14 +120,14 @@ public:
 		other.first = nullptr;
 	}
 
-	Iterator& operator[](size_t ind) {
+	Iterator operator[](size_t ind) {
 		Iterator it = this->begin();
 		for (size_t i = 0; i < ind; ++i, ++it);
 		return it;
 	}
 
 	Iterator insert_after(T data, Iterator prev) {
-		if (&(*prev) == nullptr) {
+		if (prev == nullptr) {
 			throw "Invalid node pointer";
 		}
 		Node<T>* tmp = new Node<T>(data, nullptr);
@@ -144,7 +144,7 @@ public:
 	}
 
 	Iterator erase_after(Iterator prev) {
-		if (&(*prev) == nullptr) {
+		if (prev == nullptr) {
 			throw "Invalid node pointer";
 		}
 		Node<T>* tmp = prev->next;
