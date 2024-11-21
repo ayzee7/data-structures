@@ -10,6 +10,9 @@ public:
 	}
 
 	void pop() {
+		if (!data.size()) {
+			throw "Can't pop element from empty stack";
+		}
 		data.pop_back();
 	}
 
